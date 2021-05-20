@@ -16,6 +16,12 @@ var OrderStatuses map[uint]string = map[uint]string{
 	6: "completed",
 	7: "canceled",
 	8: "refunded",
+	9: "awaiting_web_payment",
+	10: "web_payment_successful",
+	12: "awaiting_for_collect",
+	13: "collecting", 
+	14: "transferred_for_delivery", 
+	15: "delivering",
 }
 
 // Body of status:
