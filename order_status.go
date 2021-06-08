@@ -28,6 +28,26 @@ const (
 	CANCEL_REQUEST
 )
 
+
+func (OrderStatusType) getTitles() []string {
+	return []string{"new", "payment_pending", "payment_canceled", "processing", "awaiting_shipment",  "awaiting_pickup", "completed", "canceled", 
+					"refunded", "awaiting_web_payment", "web_payment_successful", "", "awaiting_for_collect", "collecting", "transferred_for_delivery", 
+					"delivering", "cancel_request"}
+}
+
+func (s OrderStatusType) Get(status string) (OrderStatusType, error) {
+	for i, st := range s.getTitles() {
+		if st == status {
+			return OrderStatusType(i), nil
+		}
+	}
+	return 0, errors.New(fmt.Sprintf("status is not found '%s'", status))
+}
+
+func (a OrderStatusType) String() string {
+	return a.getTitles()[a] 
+}
+
 // Body of status:
 type StatusBody struct {
 	Store
