@@ -9,12 +9,12 @@ func TestNomenlcature(t *testing.T) {
 	
 	isHidden := false  // enable in smartbonus app
 	nomenclatures := []Nomenclature{
-		Nomenclature{  // Category
+		{  // Category
 			Id: "1",
 			Name: "Shirts",
 			IsCategory: true,
 		},
-		Nomenclature{  // Product
+		{  // Product
 			Id: "2",
 			Name: "Yellow shirt",
 			Description: "Best quality",
@@ -23,7 +23,7 @@ func TestNomenlcature(t *testing.T) {
 			Price: 699.99,
 			Tags: []string{"3", "7"},  // List of tags
 		},
-		Nomenclature{  // Product
+		{  // Product
 			Id: "3",
 			Name: "Blue shirt",
 			Image: "https://yoursite.com/products/blue-shift-back.png,https://yoursite.com/products/blue-shift-front.png",
@@ -31,7 +31,7 @@ func TestNomenlcature(t *testing.T) {
 			Price: 699.99,
 			Tags: []string{"3", "6"},  // List of tags
 		},
-		Nomenclature{  // Product
+		{  // Product
 			Id: "4",
 			Name: "black hat",
 			CanBuy: true,

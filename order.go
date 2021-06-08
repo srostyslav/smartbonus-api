@@ -10,7 +10,7 @@ type OrderProduct struct {
 // OrderStatus instance - element of statuses in Order:
 type OrderStatus struct {
 	Date 			int64 			`json:"date_unix"`			// date of status creation
-	Status 			uint 			`json:"status"`				// one of OrderStatuses
+	Status 			OrderStatusType `json:"status"`
 }
 
 // Order instance - send new order that created in smartbonus to your api after webhook is configured:

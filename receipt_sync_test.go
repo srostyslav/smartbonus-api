@@ -1,23 +1,24 @@
 package smartbonus
 
 import (
-	"github.com/satori/go.uuid"
 	"testing"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 func TestSyncReceipt(t *testing.T) {
 	smartbonus := NewSmartBonus(testStoreId, "")
 	
 	receipts := []ReceiptConfirm{
-		ReceiptConfirm{
+		{
 			UserId: testUserId,
 			Items: []NomenclatureItem{
-				NomenclatureItem{
+				{
 					Id: "2",
 					Quantity: 10,
 					Price: 89.65,
 				},
-				NomenclatureItem{
+				{
 					Id: "3",
 					Quantity: 0.245,
 					Price: 23.9,
@@ -26,15 +27,15 @@ func TestSyncReceipt(t *testing.T) {
 			Id: uuid.NewV4().String(),
 			Discount: 24,
 		},
-		ReceiptConfirm{
+		{
 			UserId: testUserId,
 			Items: []NomenclatureItem{
-				NomenclatureItem{
+				{
 					Id: "2",
 					Quantity: 10,
 					Price: 89.65,
 				},
-				NomenclatureItem{
+				{
 					Id: "3",
 					Quantity: 0.245,
 					Price: 23.9,

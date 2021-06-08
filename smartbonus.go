@@ -59,8 +59,8 @@ func (s *SmartBonus) RefundReceipt(receipt ReceiptRefund) (*RefundResult, error)
 	return refundReceipt(s.StoreId, receipt)
 }
 
-func (s *SmartBonus) ConfigOrder(orderUrl, statusUrl, token string) error {
-	return configOrder(s.StoreId, orderUrl, statusUrl, token)
+func (s *SmartBonus) ConfigOrder(orderUrl, statusUrl, token string, syncNomenclatureFull, syncNomenclatureByCustomer bool) error {
+	return configOrder(s.StoreId, orderUrl, statusUrl, token, syncNomenclatureFull, syncNomenclatureByCustomer)
 }
 
 func (s *SmartBonus) ChangeOrderStatus(statusBody StatusBody) error {

@@ -1,12 +1,12 @@
 package smartbonus
 
 import (
+	"bytes"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
-	"errors"
-	"bytes"
-	"fmt"
 )
 
 var rootPath string  // route of smartbonus: ask smartbonus team for you
@@ -39,7 +39,7 @@ func decodeJson(resp *http.Response, response []byte, obj interface{}) error {
 
 // Helper function that send POST request encoding in json
 func sendPostRequest(url string, body interface{}, obj interface{}) error {
-	
+
 	output, err := json.Marshal(&body)
 	if err != nil {
 		return err

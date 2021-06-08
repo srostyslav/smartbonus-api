@@ -6,38 +6,38 @@ import (
 )
 
 // List of order statuses
-var OrderStatuses map[uint]string = map[uint]string{
-	0: "new",
-	1: "payment_pending",
-	2: "payment_canceled",
-	3: "processing",
-	4: "awaiting_shipment",
-	5: "awaiting_pickup",
-	6: "completed",
-	7: "canceled",
-	8: "refunded",
-	9: "awaiting_web_payment",
-	10: "web_payment_successful",
-	12: "awaiting_for_collect",
-	13: "collecting", 
-	14: "transferred_for_delivery", 
-	15: "delivering",
-}
+type OrderStatusType int
+
+const (
+	NEW OrderStatusType = iota 
+	PAYMENT_PENDING 
+	PAYMENT_CANCELED
+	PROCESSING
+	AWAITING_SHIPMENT
+	AWAITING_PICKUP
+	COMPLETED
+	CANCELED
+	REFUNDED
+	AWAITING_WEB_PAYMENT
+	WEB_PAYMENT_SUCCESSFUL
+	_
+	AWAITING_FOR_COLLECT
+	COLLECTING
+	TRANSFERRED_FOR_DELIVERY
+	DELIVERING
+	CANCEL_REQUEST
+)
 
 // Body of status:
 type StatusBody struct {
 	Store
 	OrderId		string 			`json:"order_id"`	// identifier of order in smartbonus
-	Status		uint 			`json:"status"`		//  one of OrderStatuses
+	Status		OrderStatusType `json:"status"`		//  one of OrderStatuses
 }
 
 // Change status of order that created in smartbonus app
 // If status changed client receive push notification about it
 func changeOrderStatus(storeId string, statusBody StatusBody) error {
-	if _, ok := OrderStatuses[statusBody.Status]; !ok {
-		return errors.New(fmt.Sprintf("Status %d does not exist", statusBody.Status))
-	}
-
 	var result interface{}
 	statusBody.StoreId = storeId
 

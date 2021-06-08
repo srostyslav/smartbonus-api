@@ -1,8 +1,9 @@
 package smartbonus
 
 import (
-	"github.com/satori/go.uuid"
 	"testing"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 func TestDeleteReceipt(t *testing.T) {
@@ -11,12 +12,12 @@ func TestDeleteReceipt(t *testing.T) {
 	receipt := ReceiptConfirm{
 		UserId: testUserId,
 		Items: []NomenclatureItem{
-			NomenclatureItem{
+			{
 				Id: "2",
 				Quantity: 10,
 				Price: 89.65,
 			},
-			NomenclatureItem{
+			{
 				Id: "3",
 				Quantity: 0.245,
 				Price: 23.9,

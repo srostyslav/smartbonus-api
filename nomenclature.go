@@ -1,7 +1,7 @@
 package smartbonus
 
 import (
-    "errors"
+	"errors"
 )
 
 // Nomenclature instance has to be sync to smartbonus after it created, changed or deleted.
@@ -19,6 +19,10 @@ type Nomenclature struct {
     Tags		[]string	`json:"tags,omitempty"`			// list of tag identifiers (optional)
     CanBuy		bool		`json:"can_buy,omitempty"`		// send true if this product can be buyed in smartbonus app (optional)
     IsHidden 		*bool		`json:"is_hidden,omitempty"`		// send false if you want to show this product in smartbonus app catalog for clients (optional)
+	IsWeight 		bool 		`json:"is_weight"`					// send true if nomenclature item is weight product.
+	Multiplier		float64 	`json:"multiplier"`					// send 0.01 price at 0.1 kg & 0.001 at 1 kg
+	Quantity		float64 	`json:"quantity"`					// product quantity
+	OldPrice		float64 	`json:"old_price"`					// previous price that identify discount of product.
 }
 
 // Sync your catalog to smartbonus app
