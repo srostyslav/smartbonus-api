@@ -1,4 +1,4 @@
-module smartbonus
+module smartbonus-api
 
 go 1.16
 
