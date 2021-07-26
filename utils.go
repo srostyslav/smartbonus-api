@@ -9,13 +9,13 @@ import (
 	"net/http"
 )
 
-var rootPath string  // route of smartbonus: ask smartbonus team for you
-const testStoreId = ""  // test store id used for testing api
-const testUserId = ""  // test user id used for testing api
+var rootPath string                                        // route of smartbonus: ask smartbonus team for you
+const testStoreId = "fa7cdd67-e973-4125-9990-9c50d61faa3a" // test store id used for testing api
+const testUserId = "380662436090"                          // test user id used for testing api
 
 type sbResponse struct {
-	Status 		int				`json:"status"`
-	Message		interface{} 	`json:"message"`
+	Status  int         `json:"status"`
+	Message interface{} `json:"message"`
 }
 
 // Helper function that decode smartbonus response to your object
@@ -43,13 +43,13 @@ func sendPostRequest(url string, body interface{}, obj interface{}) error {
 	output, err := json.Marshal(&body)
 	if err != nil {
 		return err
-	} 
-	
+	}
+
 	resp, err := http.Post(url, "encoding/json", bytes.NewBuffer(output))
 	if err != nil {
 		return err
-	} 
-	
+	}
+
 	response, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return err
@@ -74,16 +74,16 @@ func sendGetRequest(url string, params map[string]string, obj interface{}) error
 
 	req.URL.RawQuery = q.Encode()
 	req.Header.Add("content-type", "application/json")
-	
+
 	resp, err := client.Do(req)
 	if err != nil {
-		return err 
+		return err
 	}
 
 	response, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return err 
+		return err
 	}
-	
+
 	return decodeJson(resp, response, obj)
 }

@@ -16,7 +16,7 @@ func syncReceipts(storeId string, receipts []ReceiptConfirm) error {
 	var result string
 	body := map[string]interface{}{"store": storeId, "elements": receipts}
 
-	if err := sendPostRequest(rootPath + "sync/receipt", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"sync/receipt", body, &result); err != nil {
 		return err
 	} else if result != "Sync success" {
 		return errors.New(result)

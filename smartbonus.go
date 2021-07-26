@@ -11,7 +11,7 @@ type SmartBonus struct {
 
 // Create new instance of SmartBonus object
 // On testing set to env variable with name SB_ROUTE
-// Ask smartbonus team for your sbRoute 
+// Ask smartbonus team for your sbRoute
 func NewSmartBonus(storeId, sbRoute string) *SmartBonus {
 	if storeId == "" {
 		panic("storeId is empty")

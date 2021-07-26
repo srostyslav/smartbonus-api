@@ -15,15 +15,15 @@ import (
 func configOrder(storeId, orderUrl, statusUrl, token string, syncNomenclatureFull, syncNomenclatureByCustomer bool) error {
 	var result interface{}
 	body := map[string]interface{}{
-		"store": storeId, 
-		"order_url": orderUrl, 
-		"status_url": statusUrl, 
-		"token": token,
-		"sync_nomenclature_full": syncNomenclatureFull,
+		"store":                         storeId,
+		"order_url":                     orderUrl,
+		"status_url":                    statusUrl,
+		"token":                         token,
+		"sync_nomenclature_full":        syncNomenclatureFull,
 		"sync_nomenclature_by_customer": syncNomenclatureByCustomer,
 	}
 
-	if err := sendPostRequest(rootPath + "order/config", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"order/config", body, &result); err != nil {
 		return err
 	} else if result != nil {
 		return errors.New(fmt.Sprintf("%v", result))

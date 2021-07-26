@@ -6,10 +6,10 @@ import (
 
 // Tag is smartbonus filter, used in smartbonus app catalog
 type Tag struct {
-	Id		string 		`json:"id"`
-	Name 		string 		`json:"name"`
-	GroupId 	string		`json:"group_id,omitempty"`
-	IsGroup 	bool		`json:"is_group"`
+	Id      string `json:"id"`
+	Name    string `json:"name"`
+	GroupId string `json:"group_id,omitempty"`
+	IsGroup bool   `json:"is_group"`
 }
 
 // Sync list of tags
@@ -24,7 +24,7 @@ func syncTags(storeId string, tags []Tag) error {
 	var result string
 	body := map[string]interface{}{"store": storeId, "elements": tags}
 
-	if err := sendPostRequest(rootPath + "sync/tag", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"sync/tag", body, &result); err != nil {
 		return err
 	} else if result != "Sync success" {
 		return errors.New(result)

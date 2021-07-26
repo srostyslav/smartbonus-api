@@ -8,19 +8,19 @@ import (
 
 func TestDeleteReceipt(t *testing.T) {
 	smartbonus := NewSmartBonus(testStoreId, "")
-	
+
 	receipt := ReceiptConfirm{
 		UserId: testUserId,
 		Items: []NomenclatureItem{
 			{
-				Id: "2",
+				Id:       "2",
 				Quantity: 10,
-				Price: 89.65,
+				Price:    89.65,
 			},
 			{
-				Id: "3",
+				Id:       "3",
 				Quantity: 0.245,
-				Price: 23.9,
+				Price:    23.9,
 			},
 		},
 		Id: uuid.NewV4().String(),

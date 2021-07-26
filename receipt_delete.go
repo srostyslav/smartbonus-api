@@ -20,7 +20,7 @@ func deleteReceipts(storeId string, receipts []string) error {
 	var result string
 	body := map[string]interface{}{"store": storeId, "elements": elements}
 
-	if err := sendPostRequest(rootPath + "delete/receipt", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"delete/receipt", body, &result); err != nil {
 		return err
 	} else if result != "Delete success" {
 		return errors.New(result)

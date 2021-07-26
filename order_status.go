@@ -9,8 +9,8 @@ import (
 type OrderStatusType int
 
 const (
-	NEW OrderStatusType = iota 
-	PAYMENT_PENDING 
+	NEW OrderStatusType = iota
+	PAYMENT_PENDING
 	PAYMENT_CANCELED
 	PROCESSING
 	AWAITING_SHIPMENT
@@ -28,11 +28,10 @@ const (
 	CANCEL_REQUEST
 )
 
-
 func (OrderStatusType) getTitles() []string {
-	return []string{"new", "payment_pending", "payment_canceled", "processing", "awaiting_shipment",  "awaiting_pickup", "completed", "canceled", 
-					"refunded", "awaiting_web_payment", "web_payment_successful", "", "awaiting_for_collect", "collecting", "transferred_for_delivery", 
-					"delivering", "cancel_request"}
+	return []string{"new", "payment_pending", "payment_canceled", "processing", "awaiting_shipment", "awaiting_pickup", "completed", "canceled",
+		"refunded", "awaiting_web_payment", "web_payment_successful", "", "awaiting_for_collect", "collecting", "transferred_for_delivery",
+		"delivering", "cancel_request"}
 }
 
 func (s OrderStatusType) Get(status string) (OrderStatusType, error) {
@@ -45,14 +44,14 @@ func (s OrderStatusType) Get(status string) (OrderStatusType, error) {
 }
 
 func (a OrderStatusType) String() string {
-	return a.getTitles()[a] 
+	return a.getTitles()[a]
 }
 
 // Body of status:
 type StatusBody struct {
 	Store
-	OrderId		string 			`json:"order_id"`	// identifier of order in smartbonus
-	Status		OrderStatusType `json:"status"`		//  one of OrderStatuses
+	OrderId string          `json:"order_id"` // identifier of order in smartbonus
+	Status  OrderStatusType `json:"status"`   //  one of OrderStatuses
 }
 
 // Change status of order that created in smartbonus app
@@ -61,7 +60,7 @@ func changeOrderStatus(storeId string, statusBody StatusBody) error {
 	var result interface{}
 	statusBody.StoreId = storeId
 
-	if err := sendPostRequest(rootPath + "order/status", statusBody, &result); err != nil {
+	if err := sendPostRequest(rootPath+"order/status", statusBody, &result); err != nil {
 		return err
 	} else if result != nil {
 		return errors.New(fmt.Sprintf("%v", result))
