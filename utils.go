@@ -3,15 +3,15 @@ package smartbonus
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
 
-var rootPath string                                        // route of smartbonus: ask smartbonus team for you
-const testStoreId = "fa7cdd67-e973-4125-9990-9c50d61faa3a" // test store id used for testing api
-const testUserId = "380662436090"                          // test user id used for testing api
+var rootPath string                                           // route of smartbonus: ask smartbonus team for you
+const testStoreId = "fa7cdd67-e973-4125-9990-9c50d61faa3a"    // test store id used for testing api
+const testCustomerId = "0e803ff6-70c6-4c0e-93af-a7fd8b6352f5" // test store id used for testing api
+const testUserId = "380662436090"                             // test user id used for testing api
 
 type sbResponse struct {
 	Status  int         `json:"status"`
@@ -33,7 +33,7 @@ func decodeJson(resp *http.Response, response []byte, obj interface{}) error {
 			return json.Unmarshal(message, &obj)
 		}
 	} else {
-		return errors.New(fmt.Sprintf("%v", sbResp.Message))
+		return fmt.Errorf("%v", sbResp.Message)
 	}
 }
 

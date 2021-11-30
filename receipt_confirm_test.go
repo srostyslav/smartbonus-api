@@ -7,7 +7,7 @@ import (
 )
 
 func TestConfirmReceipt(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	// If client pay 900 change 2.36 you can accrued to smartbonus account
 	receipt := ReceiptConfirm{

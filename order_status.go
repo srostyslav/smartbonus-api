@@ -1,7 +1,6 @@
 package smartbonus
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -40,7 +39,7 @@ func (s OrderStatusType) Get(status string) (OrderStatusType, error) {
 			return OrderStatusType(i), nil
 		}
 	}
-	return 0, errors.New(fmt.Sprintf("status is not found '%s'", status))
+	return 0, fmt.Errorf("status is not found '%s'", status)
 }
 
 func (a OrderStatusType) String() string {
@@ -60,10 +59,10 @@ func changeOrderStatus(storeId string, statusBody StatusBody) error {
 	var result interface{}
 	statusBody.StoreId = storeId
 
-	if err := sendPostRequest(rootPath+"order/status", statusBody, &result); err != nil {
+	if err := sendPostRequest(rootPath+"v2/order/status", statusBody, &result); err != nil {
 		return err
 	} else if result != nil {
-		return errors.New(fmt.Sprintf("%v", result))
+		return fmt.Errorf("%v", result)
 	}
 
 	return nil

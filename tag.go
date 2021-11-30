@@ -16,15 +16,15 @@ type Tag struct {
 // warning: ensure that count of elements has to be less than or equal 500 in a request
 func syncTags(storeId string, tags []Tag) error {
 	if len(tags) > 500 {
-		return errors.New("Length of tags must be less or equal than 500 elements")
+		return errors.New("length of tags must be less or equal than 500 elements")
 	} else if len(tags) == 0 {
-		return errors.New("No element found")
+		return errors.New("no element found")
 	}
 
 	var result string
 	body := map[string]interface{}{"store": storeId, "elements": tags}
 
-	if err := sendPostRequest(rootPath+"sync/tag", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"v2/sync/tag", body, &result); err != nil {
 		return err
 	} else if result != "Sync success" {
 		return errors.New(result)

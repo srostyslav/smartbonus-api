@@ -7,7 +7,7 @@ import (
 )
 
 func TestSyncReceipt(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	receipts := []ReceiptConfirm{
 		{

@@ -5,7 +5,7 @@ import (
 )
 
 func TestOrderConfig(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	orderUrl, statusUrl := "https://domain:port/api/order", "https://domain:port/api/status"
 	if err := smartbonus.ConfigOrder(orderUrl, statusUrl, "really strong token of your store", true, false); err != nil {

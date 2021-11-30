@@ -7,7 +7,7 @@ import (
 )
 
 func TestDeleteReceipt(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	receipt := ReceiptConfirm{
 		UserId: testUserId,

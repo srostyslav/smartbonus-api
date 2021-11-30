@@ -5,7 +5,7 @@ import (
 )
 
 func TestTag(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	tags := []Tag{
 		{Name: "Size", IsGroup: true, Id: "1"},

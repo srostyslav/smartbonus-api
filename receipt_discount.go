@@ -23,9 +23,9 @@ type ReceiptDiscount struct {
 func discountReceipt(storeId string, receipt ReceiptDiscount) (*ReceiptResult, error) {
 	var result ReceiptResult
 	if len(receipt.Items) == 0 {
-		return &result, errors.New("No item found")
+		return &result, errors.New("no item found")
 	}
 
 	receipt.StoreId = storeId
-	return &result, sendPostRequest(rootPath+"receipt/discount", receipt, &result)
+	return &result, sendPostRequest(rootPath+"v2/receipt/discount", receipt, &result)
 }

@@ -5,37 +5,36 @@ import (
 )
 
 func TestNomenlcature(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
-	isHidden := false // enable in smartbonus app
-	nomenclatures := []Nomenclature{
-		{ // Category
-			Id:         "1",
-			Name:       "Shirts",
-			IsCategory: true,
-		},
-		{ // Product
-			Id:          "2",
-			Name:        "Yellow shirt",
-			Description: "Best quality",
-			Image:       "https://yoursite.com/products/yellow-shift.png",
-			CategoryId:  "1", // Category reference
-			Price:       699.99,
-			Tags:        []string{"3", "7"}, // List of tags
-		},
-		{ // Product
-			Id:         "3",
-			Name:       "Blue shirt",
-			Image:      "https://yoursite.com/products/blue-shift-back.png,https://yoursite.com/products/blue-shift-front.png",
-			CategoryId: "1", // Category reference
-			Price:      699.99,
-			Tags:       []string{"3", "6"}, // List of tags
-		},
-		{ // Product
-			Id:       "4",
-			Name:     "black hat",
-			CanBuy:   true,
-			IsHidden: &isHidden,
+	nomenclatures := []Product{
+		{
+			ProductItem: ProductItem{
+				ID:           "2",
+				Titles:       TextLang{EN: "Yellow shirt"},
+				Descriptions: TextLang{EN: "Best quality"},
+				Images:       []string{"https://yoursite.com/products/yellow-shift.png"},
+				Categories:   []string{"1", "3"}, // Category reference
+				Prices: []Price{
+					{
+						Value:    699.99,
+						OldPrice: 900,
+						Measure:  PIECE,
+						Quantity: 1,
+					},
+				},
+				IsHidden: true,
+				CanBuy:   true,
+				Brand:    "Google",
+				Characteristics: []Characteristic{
+					{
+						ID: 5,
+						Text: &TextLang{
+							UK: "S",
+						},
+					},
+				},
+			},
 		},
 	}
 

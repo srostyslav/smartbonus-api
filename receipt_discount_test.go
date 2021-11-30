@@ -6,7 +6,7 @@ import (
 )
 
 func TestDiscountReceipt(t *testing.T) {
-	smartbonus := NewSmartBonus(testStoreId, "")
+	smartbonus := NewSmartBonus(testStoreId, "", testCustomerId)
 
 	receipt := ReceiptDiscount{
 		UserId: testUserId,

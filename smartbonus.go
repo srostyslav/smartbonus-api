@@ -12,9 +12,12 @@ type SmartBonus struct {
 // Create new instance of SmartBonus object
 // On testing set to env variable with name SB_ROUTE
 // Ask smartbonus team for your sbRoute
-func NewSmartBonus(storeId, sbRoute string) *SmartBonus {
+func NewSmartBonus(storeId, sbRoute, customerId string) *SmartBonus {
 	if storeId == "" {
 		panic("storeId is empty")
+	}
+	if customerId == "" {
+		panic("customerId is empty")
 	}
 	if sbRoute == "" {
 		sbRoute = os.Getenv("SB_ROUTE")
@@ -22,9 +25,7 @@ func NewSmartBonus(storeId, sbRoute string) *SmartBonus {
 	if rootPath = sbRoute; rootPath == "" {
 		panic("sbRoute is empty")
 	}
-	sb := SmartBonus{}
-	sb.StoreId = storeId
-	return &sb
+	return &SmartBonus{Store: Store{StoreId: storeId, CustomerId: customerId}}
 }
 
 func (s *SmartBonus) GetClient(userId string) (*Client, error) {
@@ -35,8 +36,8 @@ func (s *SmartBonus) SyncTags(tags []Tag) error {
 	return syncTags(s.StoreId, tags)
 }
 
-func (s *SmartBonus) SyncNomenclatures(nomes []Nomenclature) error {
-	return syncNomenclatures(s.StoreId, nomes)
+func (s *SmartBonus) SyncNomenclatures(nomes []Product) error {
+	return syncNomenclatures(s.CustomerId, nomes)
 }
 
 func (s *SmartBonus) DiscountReceipt(receipt ReceiptDiscount) (*ReceiptResult, error) {

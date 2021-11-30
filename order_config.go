@@ -1,7 +1,6 @@
 package smartbonus
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -23,10 +22,10 @@ func configOrder(storeId, orderUrl, statusUrl, token string, syncNomenclatureFul
 		"sync_nomenclature_by_customer": syncNomenclatureByCustomer,
 	}
 
-	if err := sendPostRequest(rootPath+"order/config", body, &result); err != nil {
+	if err := sendPostRequest(rootPath+"v2/order/config", body, &result); err != nil {
 		return err
 	} else if result != nil {
-		return errors.New(fmt.Sprintf("%v", result))
+		return fmt.Errorf("%v", result)
 	}
 
 	return nil

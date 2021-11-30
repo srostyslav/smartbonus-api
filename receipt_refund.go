@@ -34,9 +34,9 @@ type ReceiptRefund struct {
 func refundReceipt(storeId string, receipt ReceiptRefund) (*RefundResult, error) {
 	var result RefundResult
 	if len(receipt.Items) == 0 {
-		return &result, errors.New("No item found")
+		return &result, errors.New("no item found")
 	}
 
 	receipt.StoreId = storeId
-	return &result, sendPostRequest(rootPath+"refund/receipt", receipt, &result)
+	return &result, sendPostRequest(rootPath+"v2/refund/receipt", receipt, &result)
 }
