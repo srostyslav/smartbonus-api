@@ -40,6 +40,10 @@ func (s *SmartBonus) SyncNomenclatures(nomes []Product) error {
 	return syncNomenclatures(s.CustomerId, nomes)
 }
 
+func (s *SmartBonus) SyncNomenclaturesV2(nomes []Nomenclature) error {
+	return syncNomenclaturesV2(s.StoreId, nomes)
+}
+
 func (s *SmartBonus) DiscountReceipt(receipt ReceiptDiscount) (*ReceiptResult, error) {
 	return discountReceipt(s.StoreId, receipt)
 }
