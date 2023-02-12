@@ -93,6 +93,7 @@ type Nomenclature struct {
 	Quantity    float64  `json:"quantity"`              // product quantity
 	OldPrice    float64  `json:"old_price"`             // previous price that identify discount of product.
 	Priority    int64    `json:"priority"`              // priority in apps
+	Articul     string   `json:"articul"`               // articul of product
 }
 
 // Sync your catalog to smartbonus app
