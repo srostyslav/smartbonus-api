@@ -8,7 +8,7 @@ type NomenclatureItem struct {
 	Id       string  `json:"nomenclature_id"` // your product identifier
 	Quantity float64 `json:"amount"`          // quantity or product
 	Price    float64 `json:"unit_price"`      // price of product
-	PosterID bool    `json:"poster_id"`       // the nomenlautre is related to the store, not to the customer
+	PosterID string  `json:"poster_id"`       // the nomenlautre is related to the store, not to the customer
 }
 
 // Body for receipt discount method
