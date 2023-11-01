@@ -14,10 +14,11 @@ type NomenclatureItem struct {
 // Body for receipt discount method
 type ReceiptDiscount struct {
 	Store
-	UserId    string             `json:"user_id"`             // Phone or sanned key from smartbonus app
-	Date      int64              `json:"date,omitempty"`      // Date of receipt (optional)
-	Withdrawn float64            `json:"withdrawn,omitempty"` // Amount of money that cashier want to withdraw from client account (optional)
-	Items     []NomenclatureItem `json:"receipt"`             // products of receipt
+	UserId     string                 `json:"user_id"`             // Phone or sanned key from smartbonus app
+	Date       int64                  `json:"date,omitempty"`      // Date of receipt (optional)
+	Withdrawn  float64                `json:"withdrawn,omitempty"` // Amount of money that cashier want to withdraw from client account (optional)
+	Items      []NomenclatureItem     `json:"receipt"`             // products of receipt
+	Additional map[string]interface{} `json:"additional"`
 }
 
 // Get discount of receipt
